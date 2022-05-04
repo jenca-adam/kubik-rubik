@@ -1,6 +1,6 @@
-from _backend import *
+from rubik._backend import *
 
 c=Cube()
 
-c.run("b'")
+c.scramble()
 print(c)

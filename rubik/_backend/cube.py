@@ -4,11 +4,7 @@ import numpy as np
 import random
 
 TRANS_PATTERN=re.compile("^([RrMLlEUuSDdxFfyBbz])('?)$")
-_transs="RrMLlEUuSDdxFfyBbz"
-transs=[]
-for i in _transs:
-    transs.append(i)
-    transs.append(i+"'")
+transs="RrMLlEUuSDdxFfyBbz"
 def rotate_face(cube,i,reverse=False):
     face=cube[i]
     face=np.rot90(face)
@@ -123,19 +119,15 @@ class Cube:
         for x in alg.split():
             self.transform(x)
     def scramble(self):
-        nmoves=random.randrange(10,20)
+        nmoves=random.randrange(50,100)
     
         moves=random.choices(transs,k=nmoves)
         for move in moves:
-            print(move)
             self.transform(move)
     def __setitem__(self,ix,i):
         self.faces[ix]=i
     def __getitem__(self,ix):
         return self.faces[ix]
     def __repr__(self):
-        x=[]
-        for i in self.faces:
-            x.append(' '.join(i))
-            
+        return repr(self.faces) 
 
