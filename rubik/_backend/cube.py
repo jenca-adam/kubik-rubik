@@ -24,9 +24,9 @@ def rotate_row(cube,i,reverse=False):
     row=cube[4][i]
     l = [2,1,3,4] if (not reverse) else [3,1,2,4]
     for ix in l:
-        rw=dupl(row)
+        rw=row
         row=dupl(cube[ix][i])
-        cube[ix][i]=dupl(rw)
+        cube[ix][i]=rw
 def rotate_zrow(cube,i,reverse=False):
     row=cube[0][i]
     l = [3,5,2,0] if (not reverse) else [2,5,3,0]
@@ -78,8 +78,9 @@ class Transformation:
             rotate_face(cube,0,self.reverse)
             rotate_rows(cube,[0,1],self.reverse)
         elif self.type == 'D':
-            rotate_face(cube,4,not self.reverse)
             rotate_row(cube,2,not self.reverse)
+            rotate_face(cube,5,not self.reverse)
+
         elif self.type == 'd':
             rotate_face(cube,4,not self.reverse)
             rotate_rows(cube,[1,2], not self.reverse)
@@ -107,7 +108,8 @@ class Transformation:
             rotate_zrows(cube,[0,1,2], self.reverse)
             rotate_face(cube,1,self.reverse)
             rotate_face(cube,4,self.reverse)
-
+        elif self.type == "":
+            return
         else:
             raise NotImplementedError
 class Cube:

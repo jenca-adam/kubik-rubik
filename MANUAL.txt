@@ -1,0 +1,1 @@
+Press Space to scramble, then write notation. Note prime with CTRL + <key> and small letter with SHIFT + <key>. Use arrow keys to rotate the cube along x and y axes. Use "z" to rotate the cube along z axis. 
